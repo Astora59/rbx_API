@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config();
-
 const app = express(); // Création d'une instance de l'application Express.
 const port = process.env.PORT || 3000; // Définit le port sur lequel le serveur va écouter (par défaut 3000, sinon depuis les variables d'environnement).
 
@@ -34,4 +33,18 @@ app.get("/", (req: any, res: { send: (arg0: string) => void; }) => { // Quand un
 app.listen(port, () => { // Lance le serveur en écoutant sur le port défini.
   console.log(`Server is running on http://localhost:${port}`); // Affiche un message avec l'URL du serveur local.
 });
+
+import artistsRoutes from "./routes/artistsRoutes";
+
+app.use("/artists", artistsRoutes); // Montre les routes sur le chemin `/artists`
+
+
+mongoose
+  .connect(process.env.DATABASE_URL)
+  .then(() => {
+    console.log("MongoDB connected successfully!");
+  })
+  .catch((error: any) => {
+    console.error("MongoDB connection error:", error.message);
+  });
 
