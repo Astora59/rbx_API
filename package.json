@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "body-parser": "^1.20.3",
+    "core-js": "^3.41.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "es-abstract": "^1.23.9",
